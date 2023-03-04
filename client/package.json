@@ -15,6 +15,7 @@
     "business_logic": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
     "vite-tsconfig-paths": "^4.0.5"
   },
   "devDependencies": {
