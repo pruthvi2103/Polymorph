@@ -1,11 +1,5 @@
-import { useConversionCanvas } from '@components/ConversionCanvas/useConversionCanvas';
-import FileInput from '@components/FileInput/FileInput';
-import { Button, Input } from '@hover-design/react';
-import { getImageMetaData } from '@services/image-process';
-import { FitMethod } from '@services/useSqoosh/types';
-import { useSquoosh } from '@services/useSqoosh/useSqoosh';
-
-import { ChangeEventHandler, useEffect, useRef, useState } from 'react';
+import { Button } from '@hover-design/react';
+import React, { ChangeEventHandler, useEffect, useRef, useState } from 'react';
 import * as styles from './App.css';
 
 function App() {
