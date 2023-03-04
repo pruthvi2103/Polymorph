@@ -1,0 +1,6 @@
+{
+    "reactSnippets.settings.prettierEnabled": false,
+    "prettier.singleQuote": true,
+    "prettier.singleAttributePerLine": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
