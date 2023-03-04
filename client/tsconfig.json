@@ -22,6 +22,7 @@
             "@components/*": ["./src/components/*"],
             "@hooks/*": ["./src/hooks/*"],
             "@store/*": ["./src/store/*"],
+            "@services/*": ["./src/services/*"],
             "@utils/*": ["./src/utils/*"],
             "@theme/*": ["./src/theme/*"],
             "@data/*": ["./src/data/*"]
