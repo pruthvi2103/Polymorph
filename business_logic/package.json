@@ -1,0 +1,30 @@
+{
+    "name": "business_logic",
+    "version": "1.0.0",
+    "description": "",
+    "exports": {
+        ".": {
+          "import": "./src/index.ts"
+        }
+      },
+      "types": "./src/index.ts",
+      "files": [
+        "src"
+      ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "init": "tsc --init",
+        "watch": "tsc -w",
+        "start": "node dist/index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "sharp": "^0.31.3"
+    },
+    "devDependencies": {
+        "@types/sharp": "^0.31.1",
+        "typescript": "^4.9.5"
+    }
+}

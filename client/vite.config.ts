@@ -30,6 +30,10 @@ export default defineConfig({
                 replacement: path.resolve(__dirname, './src/store')
             },
             {
+                find: '@services',
+                replacement: path.resolve(__dirname, './src/services')
+            },
+            {
                 find: '@styles',
                 replacement: path.resolve(__dirname, './src/styles')
             },
