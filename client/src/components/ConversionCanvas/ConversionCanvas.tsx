@@ -1,9 +1,13 @@
 import React from 'react';
+import { useConversionCanvas } from './useConversionCanvas';
 
-type Props = {};
-
-const ConversionCanvas = (props: Props) => {
-    return <div></div>;
+const ConversionCanvas = ({ imgSrc }: { imgSrc: string }) => {
+    const onConversion = (img: string) => {
+        console.log(img);
+    };
+    const { convertImage, convertedImage, imageRef } =
+        useConversionCanvas(onConversion);
+    return <img ref={imageRef} src={imgSrc} />;
 };
 
 export default ConversionCanvas;

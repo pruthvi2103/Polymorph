@@ -26,6 +26,7 @@ importers:
   client:
     specifiers:
       '@hover-design/react': ^0.1.12
+      '@squoosh/lib': ^0.5.3
       '@types/node': ^18.14.6
       '@types/react': ^18.0.27
       '@types/react-dom': ^18.0.10
@@ -42,6 +43,7 @@ importers:
       vite-tsconfig-paths: ^4.0.5
     dependencies:
       '@hover-design/react': 0.1.12_v6jqlcql2qsg24f5euhan4vvcm
+      '@squoosh/lib': 0.5.3
       '@vanilla-extract/css': 1.9.5
       business_logic: link:../business_logic
       react: 18.2.0
@@ -705,6 +707,14 @@ packages:
 
   /@rushstack/eslint-patch/1.2.0:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
+    dev: false
+
+  /@squoosh/lib/0.5.3:
+    resolution: {integrity: sha512-d/yn6M0P5rk+L0QOl/hzvlHDqXCCmEvwdcYu7sXwhyYDNskg9oxlZtZTBaKKbX6Vq0rzajI9GZkDC0zXlz/oRw==}
+    engines: {node: ' ^12.5.0 || ^14.0.0 || ^16.0.0 '}
+    dependencies:
+      wasm-feature-detect: 1.5.1
+      web-streams-polyfill: 3.2.1
     dev: false
 
   /@swc/core-darwin-arm64/1.3.37:
@@ -4822,8 +4832,17 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
+  /wasm-feature-detect/1.5.1:
+    resolution: {integrity: sha512-GHr23qmuehNXHY4902/hJ6EV5sUANIJC3R/yMfQ7hWDg3nfhlcJfnIL96R2ohpIwa62araN6aN4bLzzzq5GXkg==}
+    dev: false
+
   /web-namespaces/2.0.1:
     resolution: {integrity: sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==}
+    dev: false
+
+  /web-streams-polyfill/3.2.1:
+    resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}
+    engines: {node: '>= 8'}
     dev: false
 
   /which-boxed-primitive/1.0.2:

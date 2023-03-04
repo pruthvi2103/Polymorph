@@ -11,9 +11,4 @@ export async function getImageMetaData(imageFile: File) {
         fileExtension,
         fileSize: convertFileSizeToKb(fileSize)
     };
-import React, { useState } from 'react';
-enum formatType {
-    'webp',
-    'jpeg',
-    'png'
 }
