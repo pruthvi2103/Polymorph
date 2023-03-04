@@ -1,6 +1,7 @@
 import ConvertToSelect from '@components/ConverToSelect/ConvertToSelect';
 import FileInput from '@components/FileInput/FileInput';
 import ImagePreview from '@components/ImagePreview/ImagePreview';
+import RangeSlider from '@components/RangeSlider/RangeSlider';
 import { Button } from '@hover-design/react';
 import { ImagesContextCore } from '@store/ImagesContext';
 import { useCallback, useContext } from 'react';
@@ -9,7 +10,13 @@ import { IImagesArray } from './App.types';
 import { useImageTools } from './useImageTools';
 
 function App() {
-    const { onDrop } = useImageTools();
+    const {
+        onDrop,
+        onChangeConvertTo,
+        convertTo,
+        qualityRangeValue,
+        setQualityRangeValue
+    } = useImageTools();
 
     return (
         <div className={styles.GlobalWrapper}>
@@ -18,8 +25,16 @@ function App() {
                 <ImagePreview />
             </div>
             <div className={styles.ActionBtnsSection}>
-                <ConvertToSelect />
-                <Button>Compress</Button>
+                <ConvertToSelect
+                    value={convertTo}
+                    changeHandler={onChangeConvertTo}
+                />
+                <RangeSlider
+                    value={qualityRangeValue}
+                    onChangeHandler={(e) =>
+                        setQualityRangeValue(e.target.value)
+                    }
+                />
                 <Button>Resize</Button>
             </div>
         </div>
