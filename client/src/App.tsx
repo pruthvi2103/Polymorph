@@ -1,3 +1,4 @@
+import FileInput from '@components/FileInput.tsx/FileInput';
 import { Button, Input } from '@hover-design/react';
 import * as styles from './App.css';
 
@@ -5,7 +6,7 @@ function App() {
     return (
         <div className={styles.GlobalWrapper}>
             <div className={styles.FileInputSection}>
-                <Input type="file" />
+                <FileInput />
             </div>
             <div className={styles.ActionBtnsSection}>
                 <Button>Convert To</Button>
