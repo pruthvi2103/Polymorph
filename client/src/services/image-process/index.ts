@@ -1,4 +1,14 @@
-import { getMetadata } from 'business_logic';
-export async function getImageMetaData(fileBuffer: Buffer) {
-    return getMetadata(fileBuffer);
+export function convertFileSizeToKb(fileSize: number) {
+    return fileSize / 1000;
+}
+
+export async function getImageMetaData(imageFile: File) {
+    const { name } = imageFile;
+    const fileExtension = name.split('.').pop();
+    const fileSize = imageFile.size;
+    return {
+        fileName: name,
+        fileExtension,
+        fileSize: convertFileSizeToKb(fileSize)
+    };
 }

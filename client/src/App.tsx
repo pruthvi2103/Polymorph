@@ -1,16 +1,16 @@
 import FileInput from '@components/FileInput/FileInput';
 import { Button, Input } from '@hover-design/react';
 import { getImageMetaData } from '@services/image-process';
-import { useState } from 'react';
+import { ChangeEventHandler, useState } from 'react';
 import * as styles from './App.css';
 
 function App() {
     const [fileMeta, setFileMetaData] = useState(null);
-
-    const handleFileInput = async (e) => {
-        const data = await getImageMetaData(e.target.files[0]);
-        // setFileMetaData(data);
-        console.log(data);
+    const handleFileInput: ChangeEventHandler<HTMLInputElement> = async (e) => {
+        if (e?.currentTarget?.files?.length) {
+            const data = await getImageMetaData(e.currentTarget.files[0]);
+            console.log(data);
+        }
     };
     return (
         <div className={styles.GlobalWrapper}>
