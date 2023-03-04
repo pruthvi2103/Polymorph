@@ -1,28 +1,30 @@
+import UploadIcon from '@assets/upload.svg';
 import { Input } from '@hover-design/react';
 import React, { useMemo } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { IAcceptedFiles } from 'src/App.types';
-import { InputImage } from './FileInput.css';
+import { InputImage, PlaceholderText } from './FileInput.css';
 import { IFileInput } from './FileInput.types';
 
 const InputBox = {
     backgroundColor: '#e7e7f4',
-    outline: '2px dashed gray',
+    outline: '2px dashed #808080',
     outlineOffset: -10,
     borderRadius: 2,
-    padding: '8rem'
+    padding: '6rem',
+    cursor: 'pointer'
 };
 
 const focusedStyle = {
-    outlineColor: '#2196f3'
+    outline: '2px dashed #2196f3'
 };
 
 const acceptStyle = {
-    outlineColor: '#4BB543'
+    outline: '2px dashed #4BB543'
 };
 
 const rejectStyle = {
-    outlineColor: '#ff1744'
+    outline: '2px dashed #ff1744'
 };
 
 const FileInput = ({ onDrop }: IFileInput) => {
@@ -58,6 +60,10 @@ const FileInput = ({ onDrop }: IFileInput) => {
                 accept="image/*"
                 {...getInputProps()}
             />
+            <div className={PlaceholderText}>
+                <img src={UploadIcon} alt="Upload Icon" />
+                <p>Drop files here</p>
+            </div>
         </div>
     );
 };

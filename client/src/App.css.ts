@@ -7,8 +7,11 @@ export const GlobalWrapper = style({
 
 export const FileInputSection = style({
     flex: 0.5,
-    display: 'grid',
-    placeItems: 'center'
+    gap: 20,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
 });
 
 export const ActionBtnsSection = style({
