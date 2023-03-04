@@ -6,38 +6,10 @@ import { ImagesContextCore } from '@store/ImagesContext';
 import { useCallback, useContext } from 'react';
 import * as styles from './App.css';
 import { IImagesArray } from './App.types';
+import { useImageTools } from './useImageTools';
 
 function App() {
-    const { images, setImages, imagesMetaData, setImagesMetaData } =
-        useContext(ImagesContextCore);
-    const onDrop = useCallback((acceptedFiles: IImagesArray[]) => {
-        acceptedFiles.map((file: IImagesArray, index: number) => {
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-                setImages((prevState) => [
-                    ...prevState,
-                    {
-                        id: index,
-                        src: e.target.result,
-                        path: file.path,
-                        lastModified: file.lastModified,
-                        lastModifiedDate: file.lastModifiedDate,
-                        name: file.name,
-                        size: file.size,
-                        type: file.type,
-                        webkitRelativePath: file.webkitRelativePath
-                    }
-                ]);
-            };
-            reader.readAsDataURL(file);
-            setImagesMetaData((prevData) => [...prevData, file]);
-            return file;
-        });
-    }, []);
-    console.log(images, 'data');
-
-    console.log(imagesMetaData, 'meta data');
+    const { onDrop } = useImageTools();
 
     return (
         <div className={styles.GlobalWrapper}>

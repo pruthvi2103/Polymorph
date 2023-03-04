@@ -10,7 +10,7 @@ interface TImageContextProps {
     children: JSX.Element;
 }
 
-interface TImagesContext {
+export interface TImagesContext {
     images: IAcceptedFiles[];
     setImages: Dispatch<SetStateAction<IAcceptedFiles[]>>;
     imagesMetaData: IAcceptedFilesMetaData[];
