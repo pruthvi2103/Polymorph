@@ -5,13 +5,13 @@ import { Button } from '@hover-design/react';
 import { ImagesContextCore } from '@store/ImagesContext';
 import { useCallback, useContext } from 'react';
 import * as styles from './App.css';
-import { IAcceptedFiles } from './App.types';
+import { IImagesArray } from './App.types';
 
 function App() {
     const { images, setImages, imagesMetaData, setImagesMetaData } =
         useContext(ImagesContextCore);
-    const onDrop = useCallback((acceptedFiles: IAcceptedFiles[]) => {
-        acceptedFiles.map((file: IAcceptedFiles, index: number) => {
+    const onDrop = useCallback((acceptedFiles: IImagesArray[]) => {
+        acceptedFiles.map((file: IImagesArray, index: number) => {
             const reader = new FileReader();
 
             reader.onload = function (e) {

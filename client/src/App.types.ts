@@ -1,5 +1,4 @@
-import { IAcceptedFiles } from 'src/App.types';
-export type IImagesArray = {};
+export type IImagesArray = IAcceptedFiles & IAcceptedFilesMetaData;
 
 export type IAcceptedFiles = {
     id: number;
