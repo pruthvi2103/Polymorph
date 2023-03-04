@@ -11,11 +11,13 @@ export const FileInputSection = style({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: 40
 });
 
 export const ActionBtnsSection = style({
     flex: 0.5,
     display: 'grid',
-    placeItems: 'center'
+    placeItems: 'center',
+    padding: 40
 });

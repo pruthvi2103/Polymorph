@@ -1,3 +1,4 @@
+import ConvertToSelect from '@components/ConverToSelect/ConvertToSelect';
 import FileInput from '@components/FileInput/FileInput';
 import ImagePreview from '@components/ImagePreview/ImagePreview';
 import { Button } from '@hover-design/react';
@@ -45,7 +46,7 @@ function App() {
                 <ImagePreview />
             </div>
             <div className={styles.ActionBtnsSection}>
-                <Button>Convert To</Button>
+                <ConvertToSelect />
                 <Button>Compress</Button>
                 <Button>Resize</Button>
             </div>
