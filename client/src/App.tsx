@@ -10,36 +10,11 @@ import * as styles from './App.css';
 
 function App() {
     const inputRef = useRef<HTMLInputElement>(null);
-    const opts = {
-        resizeOpts: { width: 300, height: 300, fitMethod: FitMethod.Contain }
-    };
 
-    const { squooshFile, loading, imgSrcPreview, file } = useSquoosh();
-
-    const onChangeImage = () => {
-        const files = inputRef.current?.files || [];
-        if (files[0]) {
-            squooshFile(files[0], opts);
-        }
-    };
-
-    useEffect(() => {
-        if (file) {
-            // Do something with the compressed file
-            console.log(file);
-        }
-    }, [file]);
     return (
         <div className={styles.GlobalWrapper}>
             <div className={styles.FileInputSection}>
                 {/* <FileInput onChange={handleFileInput} /> */}
-                <input
-                    ref={inputRef}
-                    accept="image/*"
-                    type="file"
-                    onChange={onChangeImage}
-                />
-                {imgSrcPreview && <img src={imgSrcPreview} alt="Preview" />}
             </div>
             <div className={styles.ActionBtnsSection}>
                 <Button>Convert To</Button>
