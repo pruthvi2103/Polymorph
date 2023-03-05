@@ -2,8 +2,8 @@ import ConvertToSelect from '@components/ConverToSelect/ConvertToSelect';
 import FileInput from '@components/FileInput/FileInput';
 import ImagePreview from '@components/ImagePreview/ImagePreview';
 import Navbar from '@components/Navbar/Navbar';
-import { Button, Flex, Input, Label } from '@hover-design/react';
 import { useImageTools } from '@hooks/useImageTools';
+import { Button, Flex, Input, Label } from '@hover-design/react';
 import * as styles from './App.css';
 
 function App() {
@@ -30,7 +30,9 @@ function App() {
             </div>
             <div className={styles.FileInputSection}>
                 {/* @ts-ignore */}
-                {images.length ? <FileInput onDrop={onDrop} /> : null}
+                {images.length ? (
+                    <FileInput onDrop={onDrop} isUploadMore />
+                ) : null}
             </div>
             <div className={styles.ActionBtnsSection}>
                 <ConvertToSelect

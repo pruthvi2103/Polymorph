@@ -11,13 +11,24 @@ const InputBox = {
     outline: '2px dashed #808080',
     outlineOffset: -10,
     borderRadius: 2,
-    // padding: '6rem',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
     width: '100%',
     cursor: 'pointer'
+};
+const InputBoxIsUploadMore = {
+    backgroundColor: '#e7e7f4',
+    outline: '2px dashed #808080',
+    outlineOffset: -10,
+    borderRadius: 2,
+    padding: '8rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    cursor: 'pointer',
+    transition: '0.3s all ease-in-out'
 };
 
 const focusedStyle = {
@@ -32,11 +43,10 @@ const rejectStyle = {
     outline: '2px dashed #ff1744'
 };
 
-const FileInput = ({ onDrop }: IFileInput) => {
+const FileInput = ({ onDrop, isUploadMore = false }: IFileInput) => {
     const {
         getRootProps,
         getInputProps,
-        acceptedFiles,
         open,
         isDragAccept,
         isFocused,
@@ -48,7 +58,7 @@ const FileInput = ({ onDrop }: IFileInput) => {
 
     const dropFileStyles = useMemo(
         () => ({
-            ...InputBox,
+            ...(isUploadMore ? InputBoxIsUploadMore : InputBox),
             ...(isFocused ? focusedStyle : {}),
             ...(isDragAccept ? acceptStyle : {}),
             ...(isDragReject ? rejectStyle : {})
@@ -71,7 +81,7 @@ const FileInput = ({ onDrop }: IFileInput) => {
             />
             <div className={PlaceholderText}>
                 <img src={UploadIcon} alt="Upload Icon" />
-                <p>Drop files here</p>
+                <p>{isUploadMore ? 'Upload more files' : 'Drop files here'}</p>
             </div>
         </div>
     );
