@@ -2,8 +2,8 @@ import { Select } from '@hover-design/react';
 import React from 'react';
 
 interface IConvertToProps {
-    changeHandler: (e) => void;
-    value: string;
+    changeHandler: (e: any) => void;
+    value: { label: string; value: string };
 }
 const options = [
     { label: 'PNG', value: 'png' },

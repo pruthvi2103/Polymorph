@@ -2,12 +2,8 @@ import ConvertToSelect from '@components/ConverToSelect/ConvertToSelect';
 import FileInput from '@components/FileInput/FileInput';
 import ImagePreview from '@components/ImagePreview/ImagePreview';
 import Navbar from '@components/Navbar/Navbar';
-import RangeSlider from '@components/RangeSlider/RangeSlider';
 import { Button } from '@hover-design/react';
-import { ImagesContextCore } from '@store/ImagesContext';
-import { useCallback, useContext } from 'react';
 import * as styles from './App.css';
-import { IImagesArray } from './App.types';
 import { useImageTools } from './useImageTools';
 
 function App() {
@@ -28,6 +24,7 @@ function App() {
                 <Navbar />
             </div>
             <div className={styles.FileInputSection}>
+                {/* @ts-ignore */}
                 {images.length ? <FileInput onDrop={onDrop} /> : null}
             </div>
             <div className={styles.ActionBtnsSection}>
@@ -45,6 +42,7 @@ function App() {
                     {images.length ? (
                         <ImagePreview />
                     ) : (
+                        // @ts-ignore
                         <FileInput onDrop={onDrop} />
                     )}
                 </div>
