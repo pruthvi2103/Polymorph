@@ -1,5 +1,7 @@
 import { downloadB64Image } from '@components/ConversionCanvas/downloadB64Image';
 import { IFileInput } from '@components/FileInput/FileInput.types';
+import { FitMethod } from '@services/useSqoosh/types';
+import { useSquoosh } from '@services/useSqoosh/useSqoosh';
 import { ImagesContextCore } from '@store/ImagesContext';
 import { resolve } from 'path';
 import React, { useCallback, useContext, useState } from 'react';
@@ -14,6 +16,8 @@ export const useImageTools = () => {
         label: 'WEBP',
         value: 'webp'
     });
+    const [resizeWidth, setResizeWidth] = useState(0);
+    const [resizeHeight, setResizeHeight] = useState(0);
     const [qualityRangeValue, setQualityRangeValue] = useState(0);
     const imageTagRef = React.useRef<HTMLImageElement>(null);
 
@@ -49,18 +53,26 @@ export const useImageTools = () => {
         });
     }, []);
 
-    const handleConvertAction = (imageData: IImagesArray) => {
+    const handleConvertAndResizeAction = (
+        imageData: IImagesArray,
+        isResizeAction: boolean
+    ) => {
         return new Promise((resolve, reject) => {
             try {
                 let img = imageTagRef.current;
                 if (img && imageTagRef.current) {
                     imageTagRef.current.src = imageData.src as string;
                     let canvas = document.createElement('canvas');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
+                    canvas.width = isResizeAction ? resizeWidth : img.width;
+                    canvas.height = isResizeAction ? resizeHeight : img.height;
                     let ctx = canvas.getContext('2d');
                     if (ctx) {
-                        ctx.drawImage(img, 0, 0);
+                        if (isResizeAction) {
+                            ctx.drawImage(img, 0, 0, resizeWidth, resizeHeight);
+                            debugger;
+                        } else {
+                            ctx.drawImage(img, 0, 0);
+                        }
                     }
                     const b64Image = canvas.toDataURL(
                         //@ts-ignore
@@ -84,10 +96,17 @@ export const useImageTools = () => {
         //@ts-ignore
         await images.reduce(async (memo, v) => {
             const results = await memo;
-            await handleConvertAction(v);
+            await handleConvertAndResizeAction(v, false);
         }, []);
     };
 
+    const batchResize = async () => {
+        //@ts-ignore
+        await images.reduce(async (memo, v) => {
+            const results = await memo;
+            await handleConvertAndResizeAction(v, true);
+        }, []);
+    };
     return {
         images,
         setImages,
@@ -99,8 +118,13 @@ export const useImageTools = () => {
         onChangeConvertTo,
         qualityRangeValue,
         setQualityRangeValue,
-        handleConvertAction,
+        handleConvertAndResizeAction,
         imageTagRef,
-        batchConvert
+        batchConvert,
+        resizeHeight,
+        setResizeHeight,
+        resizeWidth,
+        setResizeWidth,
+        batchResize
     };
 };

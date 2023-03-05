@@ -2,7 +2,7 @@ import ConvertToSelect from '@components/ConverToSelect/ConvertToSelect';
 import FileInput from '@components/FileInput/FileInput';
 import ImagePreview from '@components/ImagePreview/ImagePreview';
 import Navbar from '@components/Navbar/Navbar';
-import { Button } from '@hover-design/react';
+import { Button, Flex, Input, Label } from '@hover-design/react';
 import * as styles from './App.css';
 import { useImageTools } from './useImageTools';
 
@@ -14,8 +14,13 @@ function App() {
         qualityRangeValue,
         setQualityRangeValue,
         batchConvert,
+        batchResize,
         imageTagRef,
-        images
+        images,
+        resizeHeight,
+        resizeWidth,
+        setResizeWidth,
+        setResizeHeight
     } = useImageTools();
 
     return (
@@ -40,7 +45,9 @@ function App() {
                 /> */}
                 <div className={styles.PreviewImgGrid}>
                     {images.length ? (
-                        <ImagePreview />
+                        <div>
+                            <ImagePreview />
+                        </div>
                     ) : (
                         // @ts-ignore
                         <FileInput onDrop={onDrop} />
@@ -49,7 +56,36 @@ function App() {
                 <Button className={styles.ConvertToBtn} onClick={batchConvert}>
                     Convert
                 </Button>
+                <Flex gap={'12px'} alignItems={'baseline'}>
+                    <Label htmlFor="width-input">
+                        <span>Width</span>
+                    </Label>
+                    <Input
+                        value={resizeWidth}
+                        type="number"
+                        onChange={(e) => {
+                            setResizeWidth(e.target.value as unknown as number);
+                        }}
+                        id="width-input"
+                    ></Input>
 
+                    <Label htmlFor="height-input">
+                        <span>Height</span>
+                    </Label>
+                    <Input
+                        value={resizeHeight}
+                        type="number"
+                        onChange={(e) => {
+                            setResizeHeight(
+                                e.target.value as unknown as number
+                            );
+                        }}
+                        id="height-input"
+                    ></Input>
+                </Flex>
+                <Button className={styles.ConvertToBtn} onClick={batchResize}>
+                    Resize & Convert
+                </Button>
                 <div style={{ display: 'none' }}>
                     <img ref={imageTagRef} />
                 </div>
