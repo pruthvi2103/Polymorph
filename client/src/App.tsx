@@ -30,8 +30,7 @@ function App() {
             </div>
             <div className={styles.FileInputSection}>
                 {/* @ts-ignore */}
-                {images.length ? (
-                    <FileInput onDrop={onDrop} isUploadMore />
+                {images.length ? (<FileInput onDrop={onDrop} isUploadMore />
                 ) : null}
             </div>
             <div className={styles.ActionBtnsSection}>
