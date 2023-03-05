@@ -2,6 +2,10 @@
 
 Entry for FOSSHack 2023
 
+[DEMO VIDEO](https://www.loom.com/share/8cbba4a3a2834eb1bc51e01e8617898a)
+
+[DEMO VIDEO 2](https://www.loom.com/share/270635efad1a4858ab99b286467576aa)
+
 [live link](https://polymorph-image.netlify.app/)
 
 ## What is Polymorph?
