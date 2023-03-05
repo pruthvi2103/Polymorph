@@ -1,10 +1,10 @@
-import { Flex } from '@hover-design/react';
+import { Button, Flex } from '@hover-design/react';
 import { ImagesContextCore } from '@store/ImagesContext';
 import React, { useContext } from 'react';
-import { PreviewContainer, PreviewImg } from './ImagePreview.css';
+import { DeleteBtn, PreviewContainer, PreviewImg } from './ImagePreview.css';
 
 const ImagePreview = () => {
-    const { images } = useContext(ImagesContextCore);
+    const { images, deleteImg } = useContext(ImagesContextCore);
 
     const convertSizeToKB = (size: number) => {
         return (size / 1024).toFixed(0);
@@ -16,10 +16,17 @@ const ImagePreview = () => {
                     idx % 2 === 0 ? (
                         <Flex
                             className={PreviewContainer}
-                            key={idx}
+                            key={img.id}
                             alignItems="center"
                             flexDirection="column"
                         >
+                            <Button
+                                onClick={(id) => deleteImg(img.id)}
+                                className={DeleteBtn}
+                                variant="hallow"
+                            >
+                                🗑️
+                            </Button>
                             <div>
                                 <img
                                     className={PreviewImg}
@@ -41,10 +48,17 @@ const ImagePreview = () => {
                     idx % 2 === 0 ? null : (
                         <Flex
                             className={PreviewContainer}
-                            key={idx}
+                            key={img.id}
                             alignItems="center"
                             flexDirection="column"
                         >
+                            <Button
+                                onClick={(id) => deleteImg(img.id)}
+                                className={DeleteBtn}
+                                variant="hallow"
+                            >
+                                🗑️
+                            </Button>
                             <div>
                                 <img
                                     className={PreviewImg}

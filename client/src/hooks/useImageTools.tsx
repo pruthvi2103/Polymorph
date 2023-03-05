@@ -3,10 +3,9 @@ import { IFileInput } from '@components/FileInput/FileInput.types';
 import { FitMethod } from '@services/useSqoosh/types';
 import { useSquoosh } from '@services/useSqoosh/useSqoosh';
 import { ImagesContextCore } from '@store/ImagesContext';
-import { resolve } from 'path';
 import React, { useCallback, useContext, useState } from 'react';
-import { IAcceptedFiles, IImagesArray } from './App.types';
-import { imageMimeMap } from './constants';
+import { IImagesArray } from '../App.types';
+import { imageMimeMap } from '../constants';
 
 export const useImageTools = () => {
     const [convertTo, setConvertTo] = useState<{
@@ -25,8 +24,7 @@ export const useImageTools = () => {
         setConvertTo(e);
     };
 
-    const { images, setImages, imagesMetaData, setImagesMetaData } =
-        useContext(ImagesContextCore);
+    const { images, setImages } = useContext(ImagesContextCore);
     const onDrop = useCallback((acceptedFiles: IImagesArray[]) => {
         acceptedFiles.map((file: IImagesArray, index: number) => {
             const reader = new FileReader();
@@ -35,7 +33,7 @@ export const useImageTools = () => {
                 setImages((prevState) => [
                     ...prevState,
                     {
-                        id: index,
+                        id: crypto.randomUUID(),
                         src: e.target!.result,
                         path: file.path,
                         lastModified: file.lastModified,
@@ -48,10 +46,10 @@ export const useImageTools = () => {
                 ]);
             };
             reader.readAsDataURL(file as unknown as Blob);
-            setImagesMetaData((prevData) => [...prevData, file]);
             return file;
         });
     }, []);
+    console.log(images, 'id');
 
     const handleConvertAndResizeAction = (
         imageData: IImagesArray,
@@ -110,8 +108,6 @@ export const useImageTools = () => {
     return {
         images,
         setImages,
-        imagesMetaData,
-        setImagesMetaData,
         ImagesContextCore,
         onDrop,
         convertTo,

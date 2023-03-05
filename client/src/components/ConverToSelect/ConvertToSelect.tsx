@@ -1,5 +1,6 @@
-import { Select } from '@hover-design/react';
+import { Label, Select } from '@hover-design/react';
 import React from 'react';
+import { LabelStyle, SelectorContainer, SelectorInput } from './ConvertTo.css';
 
 interface IConvertToProps {
     changeHandler: (e: any) => void;
@@ -19,12 +20,19 @@ const options = [
 
 const ConvertToSelect = ({ value, changeHandler }: IConvertToProps) => {
     return (
-        <Select
-            placeholder="Convert To"
-            onChange={changeHandler}
-            options={options}
-            value={value}
-        />
+        <div className={SelectorContainer}>
+            <Label className={LabelStyle} htmlFor="convert-selector">
+                Convert To
+            </Label>
+            <Select
+                className={SelectorInput}
+                id="convert-selector"
+                placeholder="Convert To"
+                onChange={changeHandler}
+                options={options}
+                value={value}
+            />
+        </div>
     );
 };
 

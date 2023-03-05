@@ -1,58 +1,26 @@
-import React, {
-    createContext,
-    Dispatch,
-    SetStateAction,
-    useState
-} from 'react';
-import {
-    IAcceptedFiles,
-    IAcceptedFilesMetaData,
-    IImagesArray
-} from 'src/App.types';
-
-interface TImageContextProps {
-    children: JSX.Element;
-}
-
-export interface TImagesContext {
-    images: IImagesArray[];
-    setImages: Dispatch<SetStateAction<IImagesArray[]>>;
-    imagesMetaData: IAcceptedFilesMetaData[];
-    setImagesMetaData: Dispatch<SetStateAction<IAcceptedFilesMetaData[]>>;
-    mergedImagesData: (IAcceptedFiles & IAcceptedFilesMetaData)[];
-}
+import React, { createContext, useState } from 'react';
+import { IImagesArray } from 'src/App.types';
+import { TImageContextProps, TImagesContext } from './ImagesContext.types';
 
 export const ImagesContextCore = createContext<TImagesContext>({
     images: [],
     setImages: () => {},
-    imagesMetaData: [],
-    setImagesMetaData: () => {},
-    mergedImagesData: []
+    deleteImg: (id) => {}
 });
 
 const ImagesContext = ({ children }: TImageContextProps) => {
     const [images, setImages] = useState<IImagesArray[]>([]);
-    const [imagesMetaData, setImagesMetaData] = useState<
-        IAcceptedFilesMetaData[]
-    >([]);
-    const [mergedImagesData, setMergedImagesData] = useState<
-        TImagesContext['mergedImagesData']
-    >([]);
-    // const arr1 = images;
-    // const arr2 = imagesMetaData;
-    // const merged = arr2.map((value, index) => {
-    //     return Object.assign(value, arr1[index]);
-    // });
-    // setMergedImagesData(merged);
+
+    const deleteImg = (id: string | number) => {
+        setImages((prevImages) => prevImages.filter((img) => img.id !== id));
+    };
 
     return (
         <ImagesContextCore.Provider
             value={{
                 images,
                 setImages,
-                imagesMetaData,
-                setImagesMetaData,
-                mergedImagesData
+                deleteImg
             }}
         >
             {children}

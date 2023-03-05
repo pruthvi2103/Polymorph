@@ -1,5 +1,5 @@
-// import PolymorphLogo from '@assets/polymorph-logo.svg';
-import PolymorphLogo from '@assets/polymorph-logo-without-name.svg';
+import PolymorphLogo from '@assets/polymorph-logo.svg';
+// import PolymorphLogo from '@assets/polymorph-logo-without-name.svg';
 import { Flex } from '@hover-design/react';
 import React from 'react';
 import { LogoImg, LogoName } from './Navbar.css';
@@ -14,7 +14,7 @@ const Navbar = (props: Props) => {
                     src={PolymorphLogo}
                     alt="Polymorph logo"
                 />
-                <h1 className={LogoName}>Polymorph</h1>
+                {/* <h1 className={LogoName}>Polymorph</h1> */}
             </Flex>
         </>
     );

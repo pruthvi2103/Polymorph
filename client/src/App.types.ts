@@ -1,7 +1,7 @@
 export type IImagesArray = IAcceptedFiles & IAcceptedFilesMetaData;
 
 export type IAcceptedFiles = {
-    id: number;
+    id: string | number;
     src: string | ArrayBuffer | null;
 };
 

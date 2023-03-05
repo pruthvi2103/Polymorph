@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
 export const LogoImg = style({
-    width: 50
+    width: 70
 });
 
 export const LogoName = style({

@@ -3,8 +3,8 @@ import FileInput from '@components/FileInput/FileInput';
 import ImagePreview from '@components/ImagePreview/ImagePreview';
 import Navbar from '@components/Navbar/Navbar';
 import { Button, Flex, Input, Label } from '@hover-design/react';
+import { useImageTools } from '@hooks/useImageTools';
 import * as styles from './App.css';
-import { useImageTools } from './useImageTools';
 
 function App() {
     const {
