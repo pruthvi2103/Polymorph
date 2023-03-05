@@ -1,7 +1,4 @@
 import { downloadB64Image } from '@components/ConversionCanvas/downloadB64Image';
-import { IFileInput } from '@components/FileInput/FileInput.types';
-import { FitMethod } from '@services/useSqoosh/types';
-import { useSquoosh } from '@services/useSqoosh/useSqoosh';
 import { ImagesContextCore } from '@store/ImagesContext';
 import React, { useCallback, useContext, useState } from 'react';
 import { IImagesArray } from '../App.types';
