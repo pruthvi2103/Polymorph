@@ -8,5 +8,6 @@ export const imageMimeMap = {
     tiff: 'image/tiff',
     tif: 'image/tiff',
     bmp: 'image/bmp',
-    ico: 'image/x-icon'
+    ico: 'image/x-icon',
+    avif: 'image/avif'
 };

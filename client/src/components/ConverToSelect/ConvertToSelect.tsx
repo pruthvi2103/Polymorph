@@ -10,7 +10,12 @@ const options = [
     { label: 'PNG', value: 'png' },
     { label: 'JPEG', value: 'jpeg' },
     { label: 'WEBP', value: 'webp' },
-    { label: 'SVG', value: 'svg' }
+    { label: 'SVG', value: 'svg' },
+    { label: 'AVIF', value: 'avif' },
+    { label: 'GIF', value: 'gif' },
+    { label: 'TIFF', value: 'tiff' },
+    { label: 'BMP', value: 'bmp' },
+    { label: 'ICO', value: 'ico' }
 ];
 
 const ConvertToSelect = ({ value, changeHandler }: IConvertToProps) => {
