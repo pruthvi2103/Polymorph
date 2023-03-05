@@ -43,6 +43,7 @@ const FileInput = ({ onDrop }: IFileInput) => {
         isDragReject
     } = useDropzone({
         accept: { 'image/*': [] },
+        // @ts-ignore
         onDrop
     });
 

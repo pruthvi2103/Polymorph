@@ -6,11 +6,17 @@ import { IAcceptedFiles, IImagesArray } from './App.types';
 import { imageMimeMap } from './constants';
 
 export const useImageTools = () => {
-    const [convertTo, setConvertTo] = useState('');
+    const [convertTo, setConvertTo] = useState<{
+        value: string;
+        label: string;
+    }>({
+        value: 'jpeg',
+        label: 'JPEG'
+    });
     const [qualityRangeValue, setQualityRangeValue] = useState(0);
     const imageTagRef = React.useRef<HTMLImageElement>(null);
 
-    const onChangeConvertTo = (e) => {
+    const onChangeConvertTo = (e: { value: string; label: string }) => {
         setConvertTo(e);
     };
 
@@ -41,36 +47,32 @@ export const useImageTools = () => {
             return file;
         });
     }, []);
-    // const convertPNGToWebp = () => {
-    //     let img = imageTagRef.current;
-    //     let canvas = document.createElement('canvas');
-    //     canvas.width = img.width;
-    //     canvas.height = img.height;
-    //     let ctx = canvas.getContext('2d');
-    //     ctx.drawImage(img, 0, 0);
-    //     img.src = canvas.toDataURL('image/jpeg');
-    //     // Now the image is a webp...
-    // };
+
     const handleConvertAction = (imageData: IAcceptedFiles) => {
         return new Promise((resolve, reject) => {
             try {
-                let img = imageTagRef.current;
-                imageTagRef.current.src = imageData.src;
-                let canvas = document.createElement('canvas');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                let ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                const b64Image = canvas.toDataURL(
-                    imageMimeMap[convertTo.value]
-                );
-                const imageName = imageData.name.split('.');
-                imageName.splice(-1);
-                downloadB64Image(
-                    b64Image,
-                    `${imageName.join('')}.${convertTo.value}`
-                );
-                resolve(true);
+                if (imageTagRef?.current?.src) {
+                    const img = imageTagRef.current;
+                    //@ts-ignore
+                    imageTagRef.current.src = imageData?.src;
+                    let canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx?.drawImage(img, 0, 0);
+                    const b64Image = canvas.toDataURL(
+                        //@ts-ignore
+                        imageMimeMap[convertTo.value]
+                    );
+                    //@ts-ignore
+                    const imageName = imageData.name.split('.');
+                    imageName.splice(-1);
+                    downloadB64Image(
+                        b64Image,
+                        `${imageName.join('')}.${convertTo.value}`
+                    );
+                    resolve(true);
+                }
             } catch (error) {
                 reject(error);
             }
@@ -80,6 +82,7 @@ export const useImageTools = () => {
         // images.map((image) => {
         //     await handleConvertAction(image);
         // });
+        //@ts-ignore
         await images.reduce(async (memo, v) => {
             const results = await memo;
             await handleConvertAction(v);

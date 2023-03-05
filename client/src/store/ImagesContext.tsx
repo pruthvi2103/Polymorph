@@ -4,14 +4,18 @@ import React, {
     SetStateAction,
     useState
 } from 'react';
-import { IAcceptedFiles, IAcceptedFilesMetaData } from 'src/App.types';
+import {
+    IAcceptedFiles,
+    IAcceptedFilesMetaData,
+    IImagesArray
+} from 'src/App.types';
 
 interface TImageContextProps {
     children: JSX.Element;
 }
 
 export interface TImagesContext {
-    images: IAcceptedFiles[];
+    images: IImagesArray[];
     setImages: Dispatch<SetStateAction<IAcceptedFiles[]>>;
     imagesMetaData: IAcceptedFilesMetaData[];
     setImagesMetaData: Dispatch<SetStateAction<IAcceptedFilesMetaData[]>>;
@@ -34,16 +38,11 @@ const ImagesContext = ({ children }: TImageContextProps) => {
     const [mergedImagesData, setMergedImagesData] = useState<
         TImagesContext['mergedImagesData']
     >([]);
-    // const arr1 = images;
-    // const arr2 = imagesMetaData;
-    // const merged = arr2.map((value, index) => {
-    //     return Object.assign(value, arr1[index]);
-    // });
-    // setMergedImagesData(merged);
 
     return (
         <ImagesContextCore.Provider
             value={{
+                // @ts-ignore
                 images,
                 setImages,
                 imagesMetaData,

@@ -20,11 +20,15 @@ export const useConversionCanvas = (onConversion: any) => {
     }) => {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = imageRef.current.naturalWidth;
-        canvas.height = imageRef.current.naturalHeight;
+        if (imageRef.current) {
+            canvas.width = imageRef.current.naturalWidth;
+            canvas.height = imageRef.current.naturalHeight;
+        }
+
         ctx!.drawImage(imageRef.current as unknown as CanvasImageSource, 0, 0);
         // setConvertedImage(canvas.toDataURL(`image/${format}`, quality));
         const convertedImage = canvas.toDataURL(`image/${format}`, quality);
+        // @ts-ignore
         setConvertedImage((prev) => {
             debugger;
             onConversion(convertedImage);
