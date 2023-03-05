@@ -1,5 +1,11 @@
 import { style } from '@vanilla-extract/css';
 
+export const Logo = style({
+    position: 'absolute',
+    top: 10,
+    left: 10
+});
+
 export const GlobalWrapper = style({
     minHeight: '100vh',
     display: 'flex'
@@ -13,7 +19,8 @@ export const FileInputSection = style({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 40,
-    backgroundImage: 'url(/bg.jpg)',
+    backgroundImage:
+        'linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.9)), url(/bg.jpg)',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat'

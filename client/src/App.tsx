@@ -1,6 +1,7 @@
 import ConvertToSelect from '@components/ConverToSelect/ConvertToSelect';
 import FileInput from '@components/FileInput/FileInput';
 import ImagePreview from '@components/ImagePreview/ImagePreview';
+import Navbar from '@components/Navbar/Navbar';
 import { Button } from '@hover-design/react';
 import * as styles from './App.css';
 import { useImageTools } from './useImageTools';
@@ -19,6 +20,9 @@ function App() {
 
     return (
         <div className={styles.GlobalWrapper}>
+            <div className={styles.Logo}>
+                <Navbar />
+            </div>
             <div className={styles.FileInputSection}>
                 {/* @ts-ignore */}
                 {images.length ? <FileInput onDrop={onDrop} /> : null}
