@@ -25,7 +25,7 @@ const ImagePreview = () => {
                                 className={DeleteBtn}
                                 variant="hallow"
                             >
-                                🗑️
+                                ❌
                             </Button>
                             <div>
                                 <img
@@ -57,7 +57,7 @@ const ImagePreview = () => {
                                 className={DeleteBtn}
                                 variant="hallow"
                             >
-                                🗑️
+                                ❌
                             </Button>
                             <div>
                                 <img

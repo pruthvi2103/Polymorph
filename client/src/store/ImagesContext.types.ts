@@ -8,5 +8,5 @@ export interface TImageContextProps {
 export interface TImagesContext {
     images: IImagesArray[];
     setImages: Dispatch<SetStateAction<IImagesArray[]>>;
-    deleteImg: (id) => void;
+    deleteImg: (id: IImagesArray['id']) => void;
 }

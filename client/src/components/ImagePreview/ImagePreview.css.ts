@@ -6,9 +6,15 @@ export const PreviewContainer = style({
 
 export const DeleteBtn = style({
     position: 'absolute',
-    zIndex: '2',
+    top: -10,
+    // right: 1,
+    height: 20,
+    width: 20,
+    display: 'grid',
+    placeItems: 'center',
     borderRadius: '50%',
-    aspectRatio: '1'
+    padding: 0,
+    background: 'rgba(255,255,255,1)'
 });
 
 export const PreviewImg = style({
