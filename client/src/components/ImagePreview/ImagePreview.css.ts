@@ -7,7 +7,6 @@ export const PreviewContainer = style({
 export const DeleteBtn = style({
     position: 'absolute',
     top: -10,
-    // right: 1,
     height: 20,
     width: 20,
     display: 'grid',
