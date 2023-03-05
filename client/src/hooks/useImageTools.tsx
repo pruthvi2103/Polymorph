@@ -1,10 +1,8 @@
 import { downloadB64Image } from '@components/ConversionCanvas/downloadB64Image';
-import { IFileInput } from '@components/FileInput/FileInput.types';
 import { ImagesContextCore } from '@store/ImagesContext';
-import { resolve } from 'path';
 import React, { useCallback, useContext, useState } from 'react';
-import { IAcceptedFiles, IImagesArray } from './App.types';
-import { imageMimeMap } from './constants';
+import { IImagesArray } from '../App.types';
+import { imageMimeMap } from '../constants';
 
 export const useImageTools = () => {
     const [convertTo, setConvertTo] = useState<{
@@ -31,7 +29,7 @@ export const useImageTools = () => {
                 setImages((prevState) => [
                     ...prevState,
                     {
-                        id: index,
+                        id: crypto.randomUUID(),
                         src: e.target!.result,
                         path: file.path,
                         lastModified: file.lastModified,
@@ -48,6 +46,7 @@ export const useImageTools = () => {
             return file;
         });
     }, []);
+    console.log(images, 'id');
 
     const handleConvertAction = (imageData: IImagesArray) => {
         return new Promise((resolve, reject) => {

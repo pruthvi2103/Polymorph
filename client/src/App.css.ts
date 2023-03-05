@@ -20,7 +20,7 @@ export const FileInputSection = style({
     alignItems: 'center',
     padding: 40,
     backgroundImage:
-        'linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.9)), url(/bg.jpg)',
+        'linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.2)), url(/bg.jpg)',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat'
@@ -30,7 +30,7 @@ export const ActionBtnsSection = style({
     flex: 0.5,
     display: 'grid',
     placeItems: 'center',
-    padding: 40,
+    padding: '30px 40px',
     gap: 15
 });
 

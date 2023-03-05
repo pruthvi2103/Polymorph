@@ -2,9 +2,9 @@ import ConvertToSelect from '@components/ConverToSelect/ConvertToSelect';
 import FileInput from '@components/FileInput/FileInput';
 import ImagePreview from '@components/ImagePreview/ImagePreview';
 import Navbar from '@components/Navbar/Navbar';
+import { useImageTools } from '@hooks/useImageTools';
 import { Button } from '@hover-design/react';
 import * as styles from './App.css';
-import { useImageTools } from './useImageTools';
 
 function App() {
     const {
