@@ -1,9 +1,12 @@
 import React from 'react';
 import { RangeSliderInput, RangeSliderInputWrapper } from './RangeSlider.css';
 
-interface Props {}
+interface Props {
+    value: number;
+    onChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-const RangeSlider = ({ value, onChangeHandler }) => {
+const RangeSlider = ({ value, onChangeHandler }: Props) => {
     return (
         <div className={RangeSliderInputWrapper}>
             <label>

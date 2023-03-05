@@ -24,6 +24,7 @@ function App() {
     return (
         <div className={styles.GlobalWrapper}>
             <div className={styles.FileInputSection}>
+                {/* @ts-ignore */}
                 {images.length ? <FileInput onDrop={onDrop} /> : null}
             </div>
             <div className={styles.ActionBtnsSection}>
@@ -41,6 +42,7 @@ function App() {
                     {images.length ? (
                         <ImagePreview />
                     ) : (
+                        // @ts-ignore
                         <FileInput onDrop={onDrop} />
                     )}
                 </div>

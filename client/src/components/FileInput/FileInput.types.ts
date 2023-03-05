@@ -1,3 +1,5 @@
+import { DropzoneOptions } from 'react-dropzone';
+
 export interface IFileInput {
-    onDrop: (acceptedFiles: IAcceptedFiles[]) => IAcceptedFiles;
+    onDrop: DropzoneOptions['onDrop'];
 }

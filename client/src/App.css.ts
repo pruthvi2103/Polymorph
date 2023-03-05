@@ -1,4 +1,3 @@
-import { ConvertToSelect } from '@components/ConverToSelect/ConvertToSelect';
 import { style } from '@vanilla-extract/css';
 
 export const GlobalWrapper = style({
