@@ -24,7 +24,7 @@ function App() {
     return (
         <div className={styles.GlobalWrapper}>
             <div className={styles.FileInputSection}>
-                <FileInput onDrop={onDrop} />
+                {images.length ? <FileInput onDrop={onDrop} /> : null}
             </div>
             <div className={styles.ActionBtnsSection}>
                 <ConvertToSelect
@@ -37,8 +37,16 @@ function App() {
                         setQualityRangeValue(e.target.value)
                     }
                 /> */}
-                <ImagePreview />
-                <Button onClick={batchConvert}>Convert</Button>
+                <div className={styles.PreviewImgGrid}>
+                    {images.length ? (
+                        <ImagePreview />
+                    ) : (
+                        <FileInput onDrop={onDrop} />
+                    )}
+                </div>
+                <Button className={styles.ConvertToBtn} onClick={batchConvert}>
+                    Convert
+                </Button>
 
                 <div style={{ display: 'none' }}>
                     <img ref={imageTagRef} />

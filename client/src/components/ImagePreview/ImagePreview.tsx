@@ -5,35 +5,63 @@ import { PreviewContainer, PreviewImg } from './ImagePreview.css';
 
 const ImagePreview = () => {
     const { images } = useContext(ImagesContextCore);
-    console.log(images, 'preview');
+
     const convertSizeToKB = (size: number) => {
         return (size / 1024).toFixed(0);
     };
     return (
-        <>
-            {images.map((img, idx) => (
-                <Flex
-                    className={PreviewContainer}
-                    gap="20px"
-                    key={idx}
-                    alignItems="center"
-                    flexDirection="column"
-                >
-                    <div>
-                        <img
-                            className={PreviewImg}
-                            src={img.src}
-                            width={'100%'}
-                            alt="preview"
-                        />
-                    </div>
-                    <Flex flexDirection="column" gap={10}>
-                        <h5>{img.name}</h5>
-                        <h6>{convertSizeToKB(img.size)} KB</h6>
-                    </Flex>
-                </Flex>
-            ))}
-        </>
+        <Flex gap="15px" className={PreviewContainer}>
+            <Flex flexDirection="column" gap="15px" flexGrow="1" flexBasis="1">
+                {images.map((img, idx) =>
+                    idx % 2 === 0 ? (
+                        <Flex
+                            className={PreviewContainer}
+                            key={idx}
+                            alignItems="center"
+                            flexDirection="column"
+                        >
+                            <div>
+                                <img
+                                    className={PreviewImg}
+                                    src={img.src}
+                                    width={'100%'}
+                                    alt="preview"
+                                />
+                            </div>
+                            <Flex flexDirection="column" gap={10}>
+                                <h5>{img.name}</h5>
+                                <h6>{convertSizeToKB(img.size)} KB</h6>
+                            </Flex>
+                        </Flex>
+                    ) : null
+                )}
+            </Flex>
+            <Flex flexDirection="column" gap="15px" flexGrow="1" flexBasis="1">
+                {images.map((img, idx) =>
+                    idx % 2 === 0 ? null : (
+                        <Flex
+                            className={PreviewContainer}
+                            key={idx}
+                            alignItems="center"
+                            flexDirection="column"
+                        >
+                            <div>
+                                <img
+                                    className={PreviewImg}
+                                    src={img.src}
+                                    width={'100%'}
+                                    alt="preview"
+                                />
+                            </div>
+                            <Flex flexDirection="column" gap={10}>
+                                <h5>{img.name}</h5>
+                                <h6>{convertSizeToKB(img.size)} KB</h6>
+                            </Flex>
+                        </Flex>
+                    )
+                )}
+            </Flex>
+        </Flex>
     );
 };
 
