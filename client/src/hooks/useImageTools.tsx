@@ -19,8 +19,7 @@ export const useImageTools = () => {
         setConvertTo(e);
     };
 
-    const { images, setImages, imagesMetaData, setImagesMetaData } =
-        useContext(ImagesContextCore);
+    const { images, setImages } = useContext(ImagesContextCore);
     const onDrop = useCallback((acceptedFiles: IImagesArray[]) => {
         acceptedFiles.map((file: IImagesArray, index: number) => {
             const reader = new FileReader();
@@ -42,7 +41,6 @@ export const useImageTools = () => {
                 ]);
             };
             reader.readAsDataURL(file as unknown as Blob);
-            setImagesMetaData((prevData) => [...prevData, file]);
             return file;
         });
     }, []);
@@ -90,8 +88,6 @@ export const useImageTools = () => {
     return {
         images,
         setImages,
-        imagesMetaData,
-        setImagesMetaData,
         ImagesContextCore,
         onDrop,
         convertTo,
