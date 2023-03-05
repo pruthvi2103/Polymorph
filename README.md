@@ -10,6 +10,8 @@ Entry for FOSSHack 2023
 
 [live link](https://polymorph-image.netlify.app/)
 
+[slideshow](https://docs.google.com/presentation/d/12JIaHMQimcsaxEZm3ggu1GVta7jqu4N1LY7nt4OLhi0/edit?usp=sharing)
+
 ## What is Polymorph?
 
 Polymorph is a client-side image conversion tool which converts your images to and from formats like JPEG,PNG,BMP and GIF.
