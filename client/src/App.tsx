@@ -1,12 +1,8 @@
 import ConvertToSelect from '@components/ConverToSelect/ConvertToSelect';
 import FileInput from '@components/FileInput/FileInput';
 import ImagePreview from '@components/ImagePreview/ImagePreview';
-import RangeSlider from '@components/RangeSlider/RangeSlider';
 import { Button } from '@hover-design/react';
-import { ImagesContextCore } from '@store/ImagesContext';
-import { useCallback, useContext } from 'react';
 import * as styles from './App.css';
-import { IImagesArray } from './App.types';
 import { useImageTools } from './useImageTools';
 
 function App() {
