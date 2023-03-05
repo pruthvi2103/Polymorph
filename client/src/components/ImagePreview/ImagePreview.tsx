@@ -6,7 +6,9 @@ import { PreviewContainer, PreviewImg } from './ImagePreview.css';
 const ImagePreview = () => {
     const { images } = useContext(ImagesContextCore);
     console.log(images, 'preview');
-
+    const convertSizeToKB = (size: number) => {
+        return (size / 1024).toFixed(0);
+    };
     return (
         <>
             {images.map((img, idx) => (
@@ -15,17 +17,19 @@ const ImagePreview = () => {
                     gap="20px"
                     key={idx}
                     alignItems="center"
+                    flexDirection="column"
                 >
                     <div>
                         <img
                             className={PreviewImg}
                             src={img.src}
+                            width={'100%'}
                             alt="preview"
                         />
                     </div>
                     <Flex flexDirection="column" gap={10}>
                         <h5>{img.name}</h5>
-                        <h6>{img.size}</h6>
+                        <h6>{convertSizeToKB(img.size)} KB</h6>
                     </Flex>
                 </Flex>
             ))}

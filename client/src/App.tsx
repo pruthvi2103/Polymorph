@@ -15,27 +15,34 @@ function App() {
         onChangeConvertTo,
         convertTo,
         qualityRangeValue,
-        setQualityRangeValue
+        setQualityRangeValue,
+        batchConvert,
+        imageTagRef,
+        images
     } = useImageTools();
 
     return (
         <div className={styles.GlobalWrapper}>
             <div className={styles.FileInputSection}>
                 <FileInput onDrop={onDrop} />
-                <ImagePreview />
             </div>
             <div className={styles.ActionBtnsSection}>
                 <ConvertToSelect
                     value={convertTo}
                     changeHandler={onChangeConvertTo}
                 />
-                <RangeSlider
+                {/* <RangeSlider
                     value={qualityRangeValue}
                     onChangeHandler={(e) =>
                         setQualityRangeValue(e.target.value)
                     }
-                />
-                <Button>Resize</Button>
+                /> */}
+                <ImagePreview />
+                <Button onClick={batchConvert}>Convert</Button>
+
+                <div style={{ display: 'none' }}>
+                    <img ref={imageTagRef} />
+                </div>
             </div>
         </div>
     );

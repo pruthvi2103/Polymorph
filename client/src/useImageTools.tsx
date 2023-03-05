@@ -1,10 +1,14 @@
+import { downloadB64Image } from '@components/ConversionCanvas/downloadB64Image';
 import { ImagesContextCore } from '@store/ImagesContext';
-import { useCallback, useContext, useState } from 'react';
-import { IImagesArray } from './App.types';
+import { resolve } from 'path';
+import React, { useCallback, useContext, useState } from 'react';
+import { IAcceptedFiles, IImagesArray } from './App.types';
+import { imageMimeMap } from './constants';
 
 export const useImageTools = () => {
     const [convertTo, setConvertTo] = useState('');
     const [qualityRangeValue, setQualityRangeValue] = useState(0);
+    const imageTagRef = React.useRef<HTMLImageElement>(null);
 
     const onChangeConvertTo = (e) => {
         setConvertTo(e);
@@ -47,6 +51,41 @@ export const useImageTools = () => {
     //     img.src = canvas.toDataURL('image/jpeg');
     //     // Now the image is a webp...
     // };
+    const handleConvertAction = (imageData: IAcceptedFiles) => {
+        return new Promise((resolve, reject) => {
+            try {
+                let img = imageTagRef.current;
+                imageTagRef.current.src = imageData.src;
+                let canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                let ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const b64Image = canvas.toDataURL(
+                    imageMimeMap[convertTo.value]
+                );
+                const imageName = imageData.name.split('.');
+                imageName.splice(-1);
+                downloadB64Image(
+                    b64Image,
+                    `${imageName.join('')}.${convertTo.value}`
+                );
+                resolve(true);
+            } catch (error) {
+                reject(error);
+            }
+        });
+    };
+    const batchConvert = async () => {
+        // images.map((image) => {
+        //     await handleConvertAction(image);
+        // });
+        await images.reduce(async (memo, v) => {
+            const results = await memo;
+            await handleConvertAction(v);
+        }, []);
+    };
+
     console.log(convertTo, 'concert');
 
     return {
@@ -59,6 +98,9 @@ export const useImageTools = () => {
         convertTo,
         onChangeConvertTo,
         qualityRangeValue,
-        setQualityRangeValue
+        setQualityRangeValue,
+        handleConvertAction,
+        imageTagRef,
+        batchConvert
     };
 };
