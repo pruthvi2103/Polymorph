@@ -11,8 +11,8 @@ const pwaOptions: Partial<VitePWAOptions> = {
     base: '/',
     includeAssets: ['favicon.svg'],
     manifest: {
-        name: 'PWA Router',
-        short_name: 'PWA Router',
+        name: 'Polymorph Image',
+        short_name: 'Polymorph',
         theme_color: '#ffffff',
         icons: [
             {

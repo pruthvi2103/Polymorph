@@ -20,6 +20,8 @@ Its a Progressive Web Application meaning that the images you convert are never 
 
 Did not exist and no popular open source fully offline apps for image converstion especially for bulk images, makes lives of designers and frontend devs easier who aim at making lightweight and fast apps
 
+##
+
 ## Feedback and Issues
 
 If you have any feedback or run into any issues while using Polymorph, please feel free to open an issue on the app's GitHub repository. We'll do our best to address your concerns as soon as possible.
