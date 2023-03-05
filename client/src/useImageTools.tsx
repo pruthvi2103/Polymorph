@@ -41,16 +41,7 @@ export const useImageTools = () => {
             return file;
         });
     }, []);
-    // const convertPNGToWebp = () => {
-    //     let img = imageTagRef.current;
-    //     let canvas = document.createElement('canvas');
-    //     canvas.width = img.width;
-    //     canvas.height = img.height;
-    //     let ctx = canvas.getContext('2d');
-    //     ctx.drawImage(img, 0, 0);
-    //     img.src = canvas.toDataURL('image/jpeg');
-    //     // Now the image is a webp...
-    // };
+
     const handleConvertAction = (imageData: IAcceptedFiles) => {
         return new Promise((resolve, reject) => {
             try {
