@@ -1,3 +1,5 @@
+<img src="./client/dist/pwa-512x512.png"></img>
+
 # Polymorph
 
 Entry for FOSSHack 2023
