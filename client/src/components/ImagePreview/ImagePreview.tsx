@@ -22,7 +22,7 @@ const ImagePreview = () => {
                     <div>
                         <img
                             className={PreviewImg}
-                            src={img.src}
+                            src={img.src as string}
                             width={'100%'}
                             alt="preview"
                         />

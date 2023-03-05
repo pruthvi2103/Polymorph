@@ -3,7 +3,13 @@ import { RangeSliderInput, RangeSliderInputWrapper } from './RangeSlider.css';
 
 interface Props {}
 
-const RangeSlider = ({ value, onChangeHandler }) => {
+const RangeSlider = ({
+    value,
+    onChangeHandler
+}: {
+    value: string;
+    onChangeHandler: any;
+}) => {
     return (
         <div className={RangeSliderInputWrapper}>
             <label>
