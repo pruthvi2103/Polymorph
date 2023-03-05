@@ -77,8 +77,6 @@ export const useImageTools = () => {
         }, []);
     };
 
-    console.log(convertTo, 'concert');
-
     return {
         images,
         setImages,

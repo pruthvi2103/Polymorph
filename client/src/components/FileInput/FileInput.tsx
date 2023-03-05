@@ -11,7 +11,12 @@ const InputBox = {
     outline: '2px dashed #808080',
     outlineOffset: -10,
     borderRadius: 2,
-    padding: '6rem',
+    // padding: '6rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    width: '100%',
     cursor: 'pointer'
 };
 
@@ -52,7 +57,11 @@ const FileInput = ({ onDrop }: IFileInput) => {
     );
 
     return (
-        <div onClick={open} {...getRootProps({ style: dropFileStyles })}>
+        <div
+            className={InputImage}
+            onClick={open}
+            {...getRootProps({ style: dropFileStyles })}
+        >
             <Input
                 className={InputImage}
                 id="image-input"
