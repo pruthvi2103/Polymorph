@@ -1,0 +1,66 @@
+{
+    "name": "electron-vite-react",
+    "build": {
+        "files": [
+            "dist/**/*",
+            "package.json",
+            "dist-electron/main/index.js"
+        ],
+        "directories": {
+            "buildResources": "assets"
+        }
+    },
+    "version": "2.1.0",
+    "main": "dist-electron/main/index.js",
+    "homepage": "./",
+    "description": "Electron Vite React boilerplate.",
+    "author": "草鞋没号 <308487730@qq.com>",
+    "license": "MIT",
+    "private": true,
+    "debug": {
+        "env": {
+            "VITE_DEV_SERVER_URL": "http://127.0.0.1:7777/"
+        }
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build && electron-builder ",
+        "preview": "vite preview",
+        "pree2e": "vite build --mode=test",
+        "e2e": "playwright test",
+        "package-mac": "electron-packager . --overwrite --platform=darwin --arch=arm64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+        "builder": "electron-builder build --macos --arm64 "
+    },
+    "devDependencies": {
+        "@babel/code-frame": "^7.18.6",
+        "@ladle/react": "^2.9.0",
+        "@playwright/test": "^1.31.0",
+        "@types/react": "^18.0.28",
+        "@types/react-dom": "^18.0.11",
+        "@vitejs/plugin-react": "^3.1.0",
+        "electron": "^23.1.1",
+        "electron-builder": "^23.6.0",
+        "electron-installer-dmg": "^4.0.0",
+        "electron-packager": "^17.1.1",
+        "electronmon": "^2.0.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "sass": "^1.58.3",
+        "typescript": "^4.9.5",
+        "vite": "^4.1.4",
+        "vite-electron-plugin": "^0.8.2",
+        "vite-plugin-electron": "^0.11.1",
+        "vite-plugin-electron-renderer": "^0.12.1"
+    },
+    "engines": {
+        "node": "^14.18.0 || >=16.0.0"
+    },
+    "dependencies": {
+        "@hover-design/react": "^0.1.12",
+        "@vanilla-extract/css": "^1.9.5",
+        "@vanilla-extract/vite-plugin": "^3.8.0",
+        "electron-dl": "^3.5.0",
+        "react-dropzone": "^14.2.3",
+        "vite-tsconfig-paths": "^4.0.5"
+    }
+}
